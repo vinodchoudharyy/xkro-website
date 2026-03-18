@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Xkro Solution Private Limited</title>
+  <title>Xkro Private Limited</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
     rel="stylesheet">
@@ -40,6 +40,24 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: top 0.6s cubic-bezier(.22, 1, .36, 1);
       border-bottom: 1px solid rgba(74, 184, 212, 0.2);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, var(--accent), var(--magenta));
     }
 
     #app-banner.open {
@@ -124,6 +142,39 @@
         width: 36px;
         height: 36px;
       }
+
+      /* Mobile Hero Adjustments */
+      .hero {
+        min-height: 500px;
+        padding: 20px;
+      }
+
+      .hero>div {
+        width: 100%;
+        padding: 0 10px;
+      }
+
+      .hero img {
+        width: 80px;
+        height: 80px;
+        border-radius: 18px;
+        margin: 0 auto 24px;
+      }
+
+      .hero h1 {
+        letter-spacing: 4px;
+        font-size: clamp(28px, 8vw, 42px);
+      }
+
+      .hero p {
+        letter-spacing: 3px;
+        font-size: 12px;
+      }
+
+      .hero-cta {
+        padding: 14px 36px;
+        font-size: 11px;
+      }
     }
 
     * {
@@ -180,6 +231,19 @@
 
       50% {
         transform: translateY(-16px)
+      }
+    }
+
+    /* Glowing pulse for hero logo */
+    @keyframes glowPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 16px 50px rgba(74, 184, 212, 0.4), 0 0 20px rgba(74, 184, 212, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 16px 50px rgba(74, 184, 212, 0.6), 0 0 40px rgba(74, 184, 212, 0.4);
       }
     }
 
@@ -351,9 +415,30 @@
       transition: background 0.3s, box-shadow 0.3s;
     }
 
+    #nav::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(74, 184, 212, 0.5), transparent);
+    }
+
     #nav.scrolled {
       background: rgba(22, 33, 62, 0.98);
       box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    #nav.scrolled::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      box-shadow: 0 0 20px var(--teal-glow);
     }
 
     .nav-logo {
@@ -375,6 +460,23 @@
       border-radius: 10px;
       background: white;
       transition: box-shadow 0.3s;
+      position: relative;
+    }
+
+    .nav-logo img::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+      filter: blur(6px);
+    }
+
+    .nav-logo:hover img::after {
+      opacity: 0.6;
     }
 
     .nav-logo:hover img {
@@ -580,6 +682,25 @@
       width: 100%;
     }
 
+    .sec-title .title-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(40px, 8vw, 80px);
+      font-weight: 900;
+      letter-spacing: 10px;
+      color: rgba(0, 0, 0, 0.03);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sec-title span {
+      position: relative;
+      z-index: 1;
+    }
+
     .sec-title::after {
       content: '';
       display: block;
@@ -588,6 +709,19 @@
       background: linear-gradient(90deg, var(--teal), var(--accent), var(--magenta));
       border-radius: 4px;
       margin: 14px auto 0;
+      position: relative;
+    }
+
+    .sec-title::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 60px;
+      background: radial-gradient(ellipse, rgba(74, 184, 212, 0.15), transparent 70%);
+      z-index: -1;
     }
 
     .sec-sub {
@@ -603,7 +737,7 @@
     .hero {
       height: 100vh;
       min-height: 560px;
-      background: #0f172a; /* Dark background for Globe */
+      background: #0f172a;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -613,6 +747,101 @@
       overflow: hidden;
     }
 
+    /* Animated gradient background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(74, 184, 212, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(255, 107, 157, 0.08) 0%, transparent 60%);
+      animation: gradientPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes gradientPulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    /* Grid pattern overlay */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(60px, 60px);
+      }
+    }
+
+    /* Glowing orbs */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: orbFloat 15s ease-in-out infinite;
+    }
+
+    .hero-orb-1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(74, 184, 212, 0.3);
+      top: -100px;
+      left: -100px;
+    }
+
+    .hero-orb-2 {
+      width: 350px;
+      height: 350px;
+      background: rgba(108, 99, 255, 0.25);
+      bottom: -80px;
+      right: -80px;
+      animation-delay: -5s;
+    }
+
+    .hero-orb-3 {
+      width: 250px;
+      height: 250px;
+      background: rgba(255, 107, 157, 0.2);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -10s;
+    }
+
+    @keyframes orbFloat {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      33% {
+        transform: translate(30px, -30px) scale(1.1);
+      }
+
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+
     .hero::before {
       content: '';
       background: radial-gradient(circle, rgba(74, 184, 212, 0.25) 0%, transparent 70%);
@@ -620,6 +849,9 @@
       left: -10%;
       animation: blobMove1 18s ease-in-out infinite;
       pointer-events: none;
+      position: absolute;
+      width: 50%;
+      height: 50%;
     }
 
     .hero::after {
@@ -629,6 +861,9 @@
       right: -10%;
       animation: blobMove2 20s ease-in-out infinite;
       pointer-events: none;
+      position: absolute;
+      width: 50%;
+      height: 50%;
     }
 
     .hero>div {
@@ -641,13 +876,28 @@
       width: 100px;
       height: 100px;
       border-radius: 22px;
-      margin-bottom: 28px;
+      margin: 0 auto 28px;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
       box-shadow: 0 16px 50px rgba(74, 184, 212, 0.4);
-      animation: float 4s ease-in-out infinite;
+      animation: float 4s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
       border: 3px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+    }
+
+    .hero img::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--teal), var(--accent), var(--magenta));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s;
+      filter: blur(15px);
+    }
+
+    .hero img:hover::after {
+      opacity: 0.6;
     }
 
     .hero h1 {
@@ -674,7 +924,7 @@
     .hero-cta {
       display: inline-block;
       margin-top: 32px;
-      padding: 14px 42px;
+      padding: 16px 48px;
       background: linear-gradient(135deg, var(--teal), var(--accent));
       color: white;
       text-decoration: none;
@@ -687,6 +937,26 @@
       box-shadow: 0 8px 30px rgba(74, 184, 212, 0.4);
       cursor: pointer;
       border: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent), var(--magenta));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .hero-cta:hover::before {
+      opacity: 1;
+    }
+
+    .hero-cta span {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-cta:hover {
@@ -705,7 +975,7 @@
     /* STATS BAR */
     .stats-bar {
       background: linear-gradient(135deg, var(--dark), var(--dark2));
-      padding: 50px 24px;
+      padding: 60px 24px;
       position: relative;
       overflow: hidden;
     }
@@ -718,6 +988,17 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--teal), var(--accent), var(--magenta), var(--teal));
+      background-size: 300% 100%;
+      animation: gradientMove 3s linear infinite;
+    }
+
+    .stats-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(74, 184, 212, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 50%, rgba(108, 99, 255, 0.1) 0%, transparent 40%);
     }
 
     .stats-grid {
@@ -731,6 +1012,22 @@
 
     .stat-item {
       text-align: center;
+      position: relative;
+    }
+
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -40px;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2), transparent);
+    }
+
+    .stat-item:first-child::before {
+      display: none;
     }
 
     .stat-num {
@@ -800,7 +1097,7 @@
 
     .about-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 16px 48px rgba(74, 184, 212, 0.15);
+      box-shadow: 0 16px 48px rgba(74, 184, 212, 0.15), 0 0 0 1px rgba(74, 184, 212, 0.3);
       border-color: rgba(74, 184, 212, 0.3);
     }
 
@@ -812,10 +1109,13 @@
       background-clip: text;
       margin-top: 2px;
       transition: transform 0.4s;
+      min-width: 32px;
+      text-align: center;
     }
 
     .about-card:hover i {
       transform: scale(1.25) rotate(-5deg);
+      filter: drop-shadow(0 2px 8px rgba(74, 184, 212, 0.5));
     }
 
     .about-card h3 {
@@ -867,7 +1167,7 @@
 
     .how-card:hover {
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(74, 184, 212, 0.15);
+      box-shadow: 0 20px 60px rgba(74, 184, 212, 0.2), 0 0 40px rgba(74, 184, 212, 0.1);
     }
 
     .how-circle {
@@ -882,6 +1182,22 @@
       font-size: 32px;
       color: var(--teal);
       transition: all 0.4s cubic-bezier(.22, 1, .36, 1);
+      position: relative;
+    }
+
+    .how-circle::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .how-card:hover .how-circle::after {
+      opacity: 0.3;
     }
 
     .how-card:hover .how-circle {
@@ -967,13 +1283,27 @@
       transition: opacity 0.4s;
     }
 
+    .svc-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(74, 184, 212, 0.1), rgba(108, 99, 255, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
     .svc-card:hover::before {
+      opacity: 1;
+    }
+
+    .svc-card:hover::after {
       opacity: 1;
     }
 
     .svc-card:hover {
       transform: translateY(-12px) scale(1.01);
-      box-shadow: 0 24px 60px rgba(74, 184, 212, 0.2);
+      box-shadow: 0 24px 60px rgba(74, 184, 212, 0.25), 0 0 30px rgba(74, 184, 212, 0.15);
     }
 
     .svc-card img {
@@ -982,6 +1312,14 @@
       object-fit: cover;
       display: block;
       transition: transform 0.6s cubic-bezier(.22, 1, .36, 1);
+      position: relative;
+    }
+
+    .svc-card img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
     }
 
     .svc-card:hover img {
@@ -1028,6 +1366,23 @@
       border: 1px solid var(--border);
       overflow: hidden;
       transition: all 0.3s;
+      position: relative;
+    }
+
+    .hire-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      transform: scaleY(0);
+      transition: transform 0.3s;
+    }
+
+    .hire-item:hover::before {
+      transform: scaleY(1);
     }
 
     .hire-item:hover {
@@ -1143,6 +1498,23 @@
       margin-bottom: 22px;
       border-bottom: 2px solid var(--border);
       transition: border-color 0.3s;
+      position: relative;
+      padding-top: 8px;
+    }
+
+    .fgroup::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--accent));
+      transition: width 0.4s;
+    }
+
+    .fgroup:focus-within::before {
+      width: 100%;
     }
 
     .fgroup:focus-within {
@@ -1809,100 +2181,205 @@
     footer {
       background: linear-gradient(180deg, #2c2c2c, #222);
       padding: 52px 40px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--accent), var(--magenta), var(--teal));
+      background-size: 300% 100%;
+      animation: gradientMove 3s linear infinite;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    footer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(74, 184, 212, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 40%);
+      pointer-events: none;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1.5fr;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 40px;
-      max-width: 1160px;
+      max-width: 1200px;
       margin: 0 auto 36px;
+      position: relative;
+      z-index: 1;
     }
 
     .footer-col h4 {
       color: white;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
       position: relative;
+      text-transform: uppercase;
     }
 
     .footer-col h4::after {
       content: '';
       display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--teal);
-      margin-top: 8px;
+      width: 30px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--accent));
+      margin-top: 10px;
       border-radius: 2px;
     }
 
     .footer-col p,
     .footer-col a {
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.45);
-      line-height: 1.9;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 2;
       text-decoration: none;
       display: block;
       transition: all 0.25s;
       cursor: pointer;
+      position: relative;
+      padding-left: 15px;
+    }
+
+    .footer-col p::before,
+    .footer-col a::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      opacity: 0;
+      transition: opacity 0.25s, left 0.25s;
     }
 
     .footer-col a:hover {
       color: var(--teal);
-      transform: translateX(4px);
+      transform: translateX(8px);
+    }
+
+    .footer-col a:hover::before {
+      opacity: 1;
+      left: 0;
     }
 
     .fci {
       display: flex;
-      gap: 8px;
-      margin-bottom: 9px;
+      gap: 12px;
+      margin-bottom: 14px;
       align-items: flex-start;
     }
 
     .fci i {
       color: var(--teal);
-      font-size: 12px;
-      margin-top: 2px;
+      font-size: 14px;
+      margin-top: 4px;
+      min-width: 16px;
+    }
+
+    .fci p,
+    .fci a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .fci a:hover {
+      color: var(--teal);
     }
 
     .fsoc {
       display: flex;
-      gap: 10px;
-      margin-top: 16px;
+      gap: 12px;
+      margin-top: 20px;
     }
 
     .fsoc a {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.07);
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.55);
-      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 16px;
       text-decoration: none;
       transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fsoc a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      opacity: 0;
+      transition: opacity 0.3s;
     }
 
     .fsoc a:hover {
-      background: linear-gradient(135deg, var(--teal), #3dd4b0);
       color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 4px 14px var(--teal-glow);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(74, 184, 212, 0.3);
+    }
+
+    .fsoc a:hover::before {
+      opacity: 1;
+    }
+
+    .fsoc a i {
+      position: relative;
+      z-index: 1;
     }
 
     .footer-bottom {
-      text-align: right;
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.25);
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      padding-top: 18px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
       max-width: 1160px;
       margin: 0 auto;
+      position: relative;
+    }
+
+    .footer-bottom::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
     }
 
     .fbranch {
@@ -2253,6 +2730,7 @@
         width: 80px;
         height: 80px;
         border-radius: 18px;
+        margin: 0 auto;
       }
 
       .hero h1 {
@@ -2352,7 +2830,7 @@
         width: 68px;
         height: 68px;
         border-radius: 16px;
-        margin-bottom: 20px;
+        margin: 0 auto 20px;
       }
 
       .hero h1 {
@@ -3238,6 +3716,11 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
+        <div class="footer-col">
+          <h4>POLICY TERMS</h4>
+          <a href="privacy-policy.html">PRIVACY POLICY</a>
+          <a href="terms-conditions.html">TERMS & CONDITIONS</a>
+        </div>
       </div>
       <div class="footer-bottom">&copy; Xkro Solution Private Limited 2025</div>
     </footer>
@@ -3250,7 +3733,8 @@
       <div>
         <div
           style="width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:32px;">
-          <i class="fas fa-mobile-alt"></i></div>
+          <i class="fas fa-mobile-alt"></i>
+        </div>
         <div
           style="background:var(--teal);border-radius:12px;padding:14px 28px;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:3px;">
           - OUR APP -</div>
@@ -3412,9 +3896,8 @@
         </div>
         <div class="footer-col">
           <h4>POLICY TERMS</h4>
-          <a href="#">CONFIDENTIALITY &amp; DATA POLICY</a>
-          <a href="#">QUALITY POLICY</a>
-          <a href="#">PRIVACY &amp; POLICY</a>
+          <a href="privacy-policy.html">PRIVACY POLICY</a>
+          <a href="terms-conditions.html">TERMS & CONDITIONS</a>
         </div>
       </div>
       <div class="footer-bottom">&copy; Xkro Solution Private Limited 2025</div>
@@ -3429,19 +3912,23 @@
         <div style="display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
           <div
             style="width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;font-size:26px;">
-            <i class="fas fa-drafting-compass"></i></div>
+            <i class="fas fa-drafting-compass"></i>
+          </div>
           <div
             style="width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;font-size:26px;">
-            <i class="fab fa-android"></i></div>
+            <i class="fab fa-android"></i>
+          </div>
           <div
             style="background:var(--teal);border-radius:12px;padding:14px 28px;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:3px;">
             - SERVICES -</div>
           <div
             style="width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;font-size:26px;">
-            <i class="fas fa-gamepad"></i></div>
+            <i class="fas fa-gamepad"></i>
+          </div>
           <div
             style="width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;font-size:26px;">
-            <i class="fab fa-apple"></i></div>
+            <i class="fab fa-apple"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -3585,9 +4072,8 @@
         </div>
         <div class="footer-col">
           <h4>POLICY TERMS</h4>
-          <a href="#">CONFIDENTIALITY &amp; DATA POLICY</a>
-          <a href="#">QUALITY POLICY</a>
-          <a href="#">PRIVACY &amp; POLICY</a>
+          <a href="privacy-policy.html">PRIVACY POLICY</a>
+          <a href="terms-conditions.html">TERMS & CONDITIONS</a>
         </div>
       </div>
       <div class="footer-bottom">&copy; Xkro Solution Private Limited 2025</div>
@@ -3785,9 +4271,8 @@
         </div>
         <div class="footer-col">
           <h4>POLICY TERMS</h4>
-          <a href="#">CONFIDENTIALITY &amp; DATA POLICY</a>
-          <a href="#">QUALITY POLICY</a>
-          <a href="#">PRIVACY &amp; POLICY</a>
+          <a href="privacy-policy.html">PRIVACY POLICY</a>
+          <a href="terms-conditions.html">TERMS & CONDITIONS</a>
         </div>
       </div>
       <div class="footer-bottom">&copy; Xkro Solution Private Limited 2025</div>
@@ -3932,9 +4417,8 @@
         </div>
         <div class="footer-col">
           <h4>POLICY TERMS</h4>
-          <a href="#">CONFIDENTIALITY &amp; DATA POLICY</a>
-          <a href="#">QUALITY POLICY</a>
-          <a href="#">PRIVACY &amp; POLICY</a>
+          <a href="privacy-policy.html">PRIVACY POLICY</a>
+          <a href="terms-conditions.html">TERMS & CONDITIONS</a>
         </div>
       </div>
       <div class="footer-bottom">&copy; Xkro Solution Private Limited 2025</div>

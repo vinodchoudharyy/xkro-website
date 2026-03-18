@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | Xkro</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --teal: #4ab8d4;
+            --teal-dark: #2a9ab8;
+            --teal-glow: rgba(74, 184, 212, 0.35);
+            --accent: #6c63ff;
+            --magenta: #ff6b9d;
+            --dark: #1a1a2e;
+            --dark2: #16213e;
+            --gray: #666;
+            --light: #f8f9fa;
+            --border: #e0e0e0;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--teal), var(--accent));
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--accent), var(--magenta));
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(74, 184, 212, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(108, 99, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 107, 157, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--dark), var(--dark2));
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(74, 184, 212, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(108, 99, 255, 0.2) 0%, transparent 50%);
+            animation: gradientMove 8s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--accent), var(--magenta), var(--teal));
+            background-size: 300% 100%;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        .header-content { position: relative; z-index: 1; }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--teal), #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .header h1 i {
+            -webkit-text-fill-color: var(--teal);
+            margin-right: 12px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .header p {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .nav-glass {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            animation: fadeInUp 0.6s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-5px);
+        }
+
+        .back-link i { transition: transform 0.3s; }
+        .back-link:hover i { transform: translateX(-3px); }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+        .section:nth-child(8) { animation-delay: 0.8s; }
+        .section:nth-child(9) { animation-delay: 0.9s; }
+        .section:nth-child(10) { animation-delay: 1.0s; }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(74, 184, 212, 0.15);
+        }
+
+        .section:hover::before { transform: scaleX(1); }
+
+        .section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(74, 184, 212, 0.2);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal), var(--accent));
+        }
+
+        .section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark2);
+            margin: 25px 0 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--teal), var(--accent));
+            border-radius: 50%;
+        }
+
+        .section p { color: var(--gray); margin-bottom: 15px; line-height: 1.8; }
+        .section ul { margin-left: 20px; color: var(--gray); }
+        .section li { margin-bottom: 10px; padding-left: 5px; position: relative; }
+        .section li::marker { color: var(--teal); }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(74, 184, 212, 0.08), rgba(108, 99, 255, 0.08));
+            border-left: 4px solid var(--teal);
+            padding: 24px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1));
+        }
+
+        .highlight-box:hover {
+            border-left-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(74, 184, 212, 0.15);
+        }
+
+        .toc {
+            background: linear-gradient(135deg, rgba(74, 184, 212, 0.1), rgba(108, 99, 255, 0.1));
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 35px;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .toc h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--dark);
+            padding-left: 0;
+        }
+
+        .toc h3::before { display: none; }
+
+        .toc ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            list-style: none;
+            margin: 0;
+        }
+
+        .toc li { margin-bottom: 0; padding: 0; }
+
+        .toc a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 14px;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--teal);
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(74, 184, 212, 0.15);
+        }
+
+        .toc a::before {
+            content: '→';
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .number-list {
+            counter-reset: item;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .number-list li {
+            counter-increment: item;
+            padding-left: 35px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .number-list li::before {
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: linear-gradient(135deg, var(--light), #fff);
+            padding: 18px 22px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 200px;
+            border: 1px solid rgba(74, 184, 212, 0.15);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(74, 184, 212, 0.15);
+            border-color: rgba(74, 184, 212, 0.3);
+        }
+
+        .contact-item:hover::before { transform: scaleX(1); }
+
+        .contact-item i {
+            color: var(--teal);
+            font-size: 1.3rem;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .contact-item a, .contact-item span {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .contact-item a:hover { color: var(--teal); }
+
+        .last-updated {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .last-updated::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal), var(--accent));
+        }
+
+        .last-updated p { margin-bottom: 8px; }
+
+        /* Footer Styles */
+        .page-footer {
+            background: linear-gradient(135deg, var(--dark), var(--dark2));
+            color: white;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes footerGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .page-footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--accent), var(--magenta), var(--teal));
+            background-size: 300% 100%;
+            animation: footerGlow 3s linear infinite;
+        }
+
+        .page-footer::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(74, 184, 212, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand { display: flex; flex-direction: column; gap: 15px; }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo img {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .footer-logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--teal), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-links, .footer-contact { display: flex; flex-direction: column; gap: 12px; }
+
+        .footer-links h4, .footer-contact h4, .footer-social h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover { color: var(--teal); transform: translateX(5px); }
+        .footer-links a i { width: 16px; }
+
+        .footer-contact a, .footer-contact span {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover { color: var(--teal); }
+        .footer-contact i { color: var(--teal); width: 16px; text-align: center; }
+
+        .footer-social { display: flex; flex-direction: column; gap: 15px; }
+        .social-icons { display: flex; gap: 12px; }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--teal);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 184, 212, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 100px 20px 60px; }
+            .nav-glass { top: 10px; left: 10px; right: 10px; }
+            .back-link { padding: 10px 18px; font-size: 0.8rem; }
+            .container { padding: 30px 15px; }
+            .section { padding: 24px 20px; border-radius: 16px; }
+            .toc ul { grid-template-columns: 1fr; }
+            .contact-info { flex-direction: column; }
+            .contact-item { min-width: 100%; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; padding: 40px 20px; }
+            .footer-logo { justify-content: center; }
+            .footer-links a { justify-content: center; }
+            .footer-contact a, .footer-contact span { justify-content: center; }
+            .social-icons { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 { font-size: 1.6rem; }
+            .section h2 { font-size: 1.1rem; }
+            .section h3 { font-size: 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-glass">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <div class="header">
+        <div class="header-content">
+            <h1><i class="fas fa-file-contract"></i> Terms & Conditions</h1>
+            <p>General Xkro Terms and Conditions for Escrow Services</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#introduction">1. Introduction</a></li>
+                <li><a href="#definitions">2. Definitions and Interpretation</a></li>
+                <li><a href="#acceptance">3. Acceptance of Terms</a></li>
+                <li><a href="#user-responsibility">4. User Responsibility</a></li>
+                <li><a href="#escrow-services">5. Escrow Services</a></li>
+                <li><a href="#inspection-period">6. Inspection Period</a></li>
+                <li><a href="#disputes">7. Dispute Resolution</a></li>
+                <li><a href="#fees">8. Fees and Payments</a></li>
+                <li><a href="#limitation">9. Limitation of Liability</a></li>
+                <li><a href="#termination">10. Termination</a></li>
+                <li><a href="#contact">11. Contact Information</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="introduction">
+            <h2>1. Introduction</h2>
+            <p>Welcome to Xkro Solution Private Limited ("Xkro," "we," "us," or "our"). These Terms and Conditions ("Terms") govern your use of the Xkro escrow services application (the "App") and constitute a legally binding agreement between you ("User," "you," or "your") and Xkro.</p>
+            <p>By accessing or using the App, you agree to be bound by these Terms. If you disagree with any part of these Terms, you may not access the App.</p>
+        </div>
+
+        <div class="section" id="definitions">
+            <h2>2. Definitions and Interpretation</h2>
+            <p>For the purposes of these Terms:</p>
+            <ul>
+                <li><strong>"App"</strong> means the Xkro mobile application and website.</li>
+                <li><strong>"Escrow Services"</strong> means the services provided by Xkro as an escrow agent to facilitate transactions between Buyers and Sellers.</li>
+                <li><strong>"Escrowed Funds"</strong> means funds deposited by a Buyer into escrow.</li>
+                <li><strong>"Goods"</strong> means any goods or products purchased through the App.</li>
+                <li><strong>"Buyer"</strong> means a User who purchases Goods from a Seller through the App.</li>
+                <li><strong>"Seller"</strong> means a User who sells Goods to a Buyer through the App.</li>
+                <li><strong>"Parties"</strong> means the Buyer and Seller collectively.</li>
+                <li><strong>"Inspection Period"</strong> means the time period during which the Buyer may inspect and verify the Goods.</li>
+            </ul>
+        </div>
+
+        <div class="section" id="acceptance">
+            <h2>3. Acceptance of Terms</h2>
+            <p>By registering an account with Xkro or using any of our Services, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy.</p>
+            <p>You represent and warrant that:</p>
+            <ul>
+                <li>You are at least 18 years of age and have the legal capacity to enter into binding contracts</li>
+                <li>You will use the App in accordance with these Terms</li>
+                <li>All information provided by you is accurate and complete</li>
+                <li>You will comply with all applicable laws and regulations</li>
+            </ul>
+        </div>
+
+        <div class="section" id="user-responsibility">
+            <h2>4. User Responsibility</h2>
+            <p>As a user of the Xkro App, you have the following responsibilities:</p>
+
+            <h3>4.1 Transaction Responsibilities</h3>
+            <ul>
+                <li>Provide accurate and complete information for all transactions</li>
+                <li>Ship Goods within the required 10-day period or within any longer time period upon which the Underlying Parties have agreed</li>
+                <li>Inspect Goods promptly during the Inspection Period</li>
+                <li>Communicate any disputes or issues promptly through the App</li>
+            </ul>
+
+            <h3>4.2 Payment Responsibilities</h3>
+            <ul>
+                <li>Ensure sufficient funds are available for transactions</li>
+                <li>Pay all applicable Escrow Fees</li>
+                <li>Not stop payment or request chargebacks after funds have been disbursed</li>
+                <li>Comply with all payment gateway rules and regulations</li>
+            </ul>
+
+            <h3>4.3 Information Responsibilities</h3>
+            <ul>
+                <li>Provide correct information to us at all times</li>
+                <li>Update your personal or business contact information promptly</li>
+                <li>Notify us immediately of any changes to your contact information</li>
+            </ul>
+
+            <h3>4.4 Compliance</h3>
+            <p>You agree to comply with all applicable laws, regulations, and these Terms. You acknowledge that you are responsible for understanding and complying with all laws applicable to your use of the Escrow Services.</p>
+        </div>
+
+        <div class="section" id="escrow-services">
+            <h2>5. Escrow Services</h2>
+            <p>Xkro acts as an escrow agent for transactions between Buyers and Sellers. Our services include:</p>
+            <ul>
+                <li>Holding Escrowed Funds in a non-interest-bearing deposit account</li>
+                <li>Processing payments and disbursements</li>
+                <li>Providing transaction management services</li>
+                <li>Facilitating dispute resolution between parties</li>
+            </ul>
+
+            <h3>5.1 Escrow Transaction Process</h3>
+            <ol class="number-list">
+                <li>Buyer and Seller agree to transaction terms</li>
+                <li>Buyer deposits funds into escrow</li>
+                <li>Seller ships Goods or transfers ownership</li>
+                <li>Buyer inspects and accepts Goods</li>
+                <li>Xkro releases funds to Seller (less applicable fees)</li>
+            </ol>
+
+            <h3>5.2 Escrowed Funds</h3>
+            <p>Xkro will hold Escrowed Funds in a non-interest-bearing deposit account. Subject to fulfillment of the Escrow Services, We shall be free to invest or utilize the Escrow Funds in any manner we deem fit, without any prior intimation to, or consent of, the Parties.</p>
+        </div>
+
+        <div class="section" id="inspection-period">
+            <h2>6. Inspection Period</h2>
+            <p>During the Inspection Period, Buyers and Sellers must inspect the subject property as applicable:</p>
+
+            <h3>6.1 Buyer's Rights</h3>
+            <ul>
+                <li>The Buyer shall have 10 days (or such other period as agreed between the Parties) from the date of receipt of the Goods to inspect and verify the same</li>
+                <li>Within the Inspection Period, the Buyer may either accept the Goods or reject them by giving notice of rejection through the App</li>
+                <li>If the Buyer does not respond within the Inspection Period, the Goods shall be deemed to have been accepted</li>
+            </ul>
+
+            <h3>6.2 Rejection Process</h3>
+            <ul>
+                <li>Upon rejection, the Buyer must provide detailed reasons for rejection</li>
+                <li>The Seller shall have 5 days to respond to the rejection</li>
+                <li>If the parties cannot resolve the dispute, it shall be referred to Xkro for resolution</li>
+            </ul>
+        </div>
+
+        <div class="section" id="disputes">
+            <h2>7. Dispute Resolution</h2>
+            <p>Xkro provides dispute resolution services for transactions conducted through the App. In case of any dispute:</p>
+
+            <h3>7.1 Dispute Filing</h3>
+            <ul>
+                <li>A party must file a dispute through the App within the Inspection Period</li>
+                <li>The dispute must include detailed information about the issue</li>
+                <li>Both parties will be notified of the dispute</li>
+            </ul>
+
+            <h3>7.2 Resolution Process</h3>
+            <ul>
+                <li>Xkro will review all evidence submitted by both parties</li>
+                <li>We may request additional information or documentation</li>
+                <li>Xkro's decision on the dispute shall be final and binding</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Note:</strong> Xkro reserves the right to hold or refund Escrowed Funds based on our assessment of the dispute. Our decision shall be final and binding on all parties.</p>
+            </div>
+        </div>
+
+        <div class="section" id="fees">
+            <h2>8. Fees and Payments</h2>
+            <p>Xkro charges the following fees for escrow services:</p>
+
+            <h3>8.1 Escrow Fees</h3>
+            <ul>
+                <li>Transaction Fee: 2% of the transaction amount (capped at ₹10,000)</li>
+                <li>Payment Gateway Charges: As applicable</li>
+                <li>Verification Charges: As applicable for identity verification</li>
+            </ul>
+
+            <h3>8.2 Fee Payment</h3>
+            <ul>
+                <li>All fees are deducted from the Escrowed Funds before disbursement to the Seller</li>
+                <li> Fees are non-refundable once the transaction is initiated</li>
+                <li>All applicable taxes will be charged in addition to the stated fees</li>
+            </ul>
+        </div>
+
+        <div class="section" id="limitation">
+            <h2>9. Limitation of Liability</h2>
+            <p>To the maximum extent permitted by law:</p>
+            <ul>
+                <li>Xkro shall not be liable for any indirect, incidental, special, consequential, or punitive damages</li>
+                <li>Xkro's total liability shall not exceed the amount of Escrow Fees paid for the specific transaction</li>
+                <li>We shall not be liable for any acts or omissions of third-party service providers</li>
+                <li>Xkro shall not be responsible for any disputes between Buyers and Sellers beyond our role as escrow agent</li>
+            </ul>
+        </div>
+
+        <div class="section" id="termination">
+            <h2>10. Termination</h2>
+            <p>These Terms may be terminated:</p>
+            <ul>
+                <li>By either party with 30 days written notice</li>
+                <li>By Xkro immediately if you breach these Terms</li>
+                <li>By Xkro if required by law or regulatory authorities</li>
+            </ul>
+
+            <h3>10.1 Effect of Termination</h3>
+            <p>Upon termination, your right to use the App will immediately cease. Any pending transactions will be handled according to our dispute resolution process.</p>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>11. Contact Information</h2>
+            <p>If you have any questions or concerns about these Terms or our Services, please contact us:</p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:Support@xkro.in">Support@xkro.in</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+918107093963">+91 8107093963</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <a href="https://www.xkro.in">www.xkro.in</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="last-updated">
+            <p>Last updated: March 2026</p>
+            <p>&copy; 2025 Xkro Solution Private Limited. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Xkro">
+                    <span>Xkro</span>
+                </div>
+                <p>Secure escrow services for safe transactions between buyers and sellers.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+                <a href="terms-conditions.html"><i class="fas fa-file-contract"></i> Terms & Conditions</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <a href="mailto:Support@xkro.in"><i class="fas fa-envelope"></i> Support@xkro.in</a>
+                <a href="tel:+918107093963"><i class="fas fa-phone-alt"></i> +91 8107093963</a>
+                <span><i class="fas fa-map-marker-alt"></i> Agra Chowk, NCR, Palwal, Haryana</span>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Xkro Solution Private Limited. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

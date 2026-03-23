@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.xkro.app",
+            "sha256_cert_fingerprints": [
+                "93:BF:6B:58:52:DA:D9:B2:15:BE:12:FC:39:DF:08:E0:5D:F6:BC:03:96:2E:29:32:E1:41:AE:01:98:81:F6:FD"
+            ]
+        }
+    }
+]

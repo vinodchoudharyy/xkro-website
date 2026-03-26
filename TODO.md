@@ -1,21 +1,15 @@
-# XKRO Website - GitHub Updates Complete ✅
+# XKRO Website Development Plan
 
-## Final Status: 100% Complete & Pushed 🚀
+## Current Task: Update Address in Policy Files (Approved ✅)
 
-**Latest Updates (Commit 7ee457d)**:
-- Resolved all git merge conflicts in index.html
-- Mobile hero section fully responsive (50vh consistent, clamp(60px,20vw,85px) logo sizing)
-- Unified CSS shadows/borders, removed duplicates
-- TODO.md staged & committed
+**Status**: Plan approved. Proceed with implementation.
 
-**Additional Update (Requested)**:
-- Updated TODO.md to confirm GitHub push success
-- Repository: https://github.com/vinodchoudharyy/xkro-website (main @ 7ee457d)
+### Breakdown Steps:
+1. [ ] Create TODO.md with steps (Current)
+2. [ ] Edit privacy-policy.html - Update address to "Near 2 No. School, Suratgarh, Sri Ganganagar, Rajasthan 335804"
+3. [ ] Edit terms-conditions.html - Update address consistently (2 locations)
+4. [ ] git add, commit, push to main
+5. [ ] Verify GitHub / live preview
+6. [ ] attempt_completion
 
-### Verified:
-- [x] Clean git status (no conflicts/rebases)
-- [x] Mobile responsive perfect (320px-640px)
-- [x] Push to origin/main complete (1.81 MiB uploaded)
-- [x] Live preview ready (LiveServer 5501 / `npx serve .`)
-
-**No further changes needed.** Website production-ready! 🎉
+**Repo**: https://github.com/vinodchoudharyy/xkro-website

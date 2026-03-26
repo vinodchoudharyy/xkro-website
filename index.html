@@ -9,7 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <style>
     :root {
       --teal: #4ab8d4;
@@ -131,7 +131,7 @@
 
     @media(max-width:640px) {
       #app-banner {
-        padding: 10px 16px;
+        padding: 12px 16px;
       }
 
       .ab-text p {
@@ -143,37 +143,137 @@
         height: 36px;
       }
 
+      .ab-btn {
+        padding: 10px 24px;
+        font-size: 11px;
+        min-height: 42px;
+      }
+
       /* Mobile Hero Adjustments */
       .hero {
-        min-height: 500px;
-        padding: 20px;
+        min-height: 80vh;
+        padding: 24px 20px;
+        overflow: hidden;
       }
 
       .hero>div {
         width: 100%;
-        padding: 0 10px;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
       }
 
       .hero img {
-        width: 80px;
-        height: 80px;
+        max-width: 85px;
+        width: clamp(60px, 20vw, 85px);
+        height: auto;
+        aspect-ratio: 1;
         border-radius: 18px;
-        margin: 0 auto 24px;
+        margin: 0 auto 0;
+        display: block;
+        object-fit: contain;
+        flex-shrink: 0;
       }
 
       .hero h1 {
-        letter-spacing: 4px;
-        font-size: clamp(28px, 8vw, 42px);
+        letter-spacing: clamp(2px, 0.6vw, 4px);
+        font-size: clamp(28px, 8.5vw, 44px);
+        line-height: 1.35;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 8px;
       }
 
       .hero p {
-        letter-spacing: 3px;
-        font-size: 12px;
+        letter-spacing: 1.8px;
+        font-size: clamp(14px, 4.2vw, 16px);
+        margin-top: 4px;
+        line-height: 1.65;
+        max-width: 95%;
       }
 
       .hero-cta {
-        padding: 14px 36px;
-        font-size: 11px;
+        padding: 16px 40px;
+        font-size: clamp(14px, 4vw, 15px);
+        min-height: 52px;
+        border-radius: 50px;
+        letter-spacing: 1.5px;
+      }
+    }
+
+    /* Modern Small Phone (480px and below) */
+    @media(max-width:480px) {
+      html {
+        font-size: clamp(13.5px, 3.8vw, 16px);
+      }
+
+      .hero {
+        min-height: 70vh;
+        padding: 24px 20px;
+      }
+
+      .hero img {
+        width: clamp(60px, 20vw, 85px);
+      }
+
+      .hero h1 {
+        font-size: clamp(28px, 9vw, 42px);
+        line-height: 1.3;
+        letter-spacing: clamp(1.5px, 0.5vw, 3px);
+      }
+
+      .hero p {
+        font-size: clamp(14px, 4.5vw, 16px);
+        letter-spacing: 1.2px;
+        max-width: 100%;
+      }
+
+      .hero-cta {
+        padding: 16px 36px;
+        font-size: clamp(14px, 4vw, 15px);
+        min-height: 52px;
+      }
+
+      .sec {
+        padding: 40px 16px;
+      }
+    }
+
+    /* Ultra Small Phones (360px and below) */
+    @media(max-width:360px) {
+      .hero {
+        min-height: 68vh;
+        padding: 20px 16px;
+      }
+
+      .hero img {
+        width: clamp(52px, 18vw, 72px);
+        border-radius: 16px;
+      }
+
+      .hero h1 {
+        font-size: clamp(24px, 8.5vw, 38px);
+        line-height: 1.25;
+        letter-spacing: 1.2px;
+      }
+
+      .hero p {
+        font-size: clamp(13px, 4.2vw, 15px);
+        letter-spacing: 1px;
+      }
+
+      .hero-cta {
+        padding: 14px 32px;
+        font-size: clamp(13px, 3.8vw, 14px);
+        min-height: 48px;
+        letter-spacing: 1.2px;
+      }
+
+      .sec {
+        padding: 36px 14px;
       }
     }
 
@@ -183,8 +283,16 @@
       box-sizing: border-box;
     }
 
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
     html {
       scroll-behavior: smooth;
+      font-size: clamp(16px, 4vw, 18px);
+      /* Mobile-responsive base */
+      line-height: 1.6;
     }
 
     html,
@@ -588,8 +696,27 @@
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      padding: 4px;
-      transition: transform 0.3s;
+      padding: 14px;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      transition: all 0.3s;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .mobile-menu a {
+      min-height: 52px;
+      padding: 16px 24px;
+      font-size: 16px;
+      width: 100%;
+      text-align: center;
+      border-radius: 8px;
     }
 
     .hamburger:hover {
@@ -620,11 +747,20 @@
 
     .mobile-menu {
       display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       flex-direction: column;
       background: rgba(22, 33, 62, 0.98);
-      backdrop-filter: blur(14px);
-      padding: 10px 20px 20px;
-      gap: 4px;
+      backdrop-filter: blur(20px);
+      z-index: 10001;
+      padding: 100px 20px 40px;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-y: auto;
     }
 
     .mobile-menu a {
@@ -649,7 +785,7 @@
 
     .mobile-menu.open {
       display: flex;
-      animation: fadeIn 0.3s ease;
+      animation: fadeInUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     /* PAGE TRANSITION */
@@ -876,14 +1012,18 @@
 
     .hero img {
       width: 100px;
-      height: 100px;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 1;
       border-radius: 22px;
       margin: 0 auto 28px;
       display: block;
+      object-fit: contain;
       box-shadow: 0 16px 50px rgba(74, 184, 212, 0.4);
       animation: float 4s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
       border: 3px solid rgba(255, 255, 255, 0.2);
       position: relative;
+      flex-shrink: 0;
     }
 
     .hero img::after {
@@ -924,15 +1064,18 @@
     }
 
     .hero-cta {
-      display: inline-block;
-      margin-top: 32px;
-      padding: 16px 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 28px;
+      padding: 18px 48px;
+      min-height: 52px;
       background: linear-gradient(135deg, var(--teal), var(--accent));
       color: white;
       text-decoration: none;
       border-radius: 50px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 2px;
       transition: all 0.4s;
@@ -1528,11 +1671,12 @@
       width: 100%;
       border: none;
       outline: none;
-      padding: 10px 0;
-      font-size: 13px;
+      padding: 12px 0;
+      font-size: 16px;
       color: var(--dark);
       background: transparent;
       font-family: 'Open Sans', sans-serif;
+      min-height: 48px;
     }
 
     .fgroup input::placeholder,
@@ -1549,7 +1693,8 @@
 
     .fgroup textarea {
       resize: none;
-      height: 80px;
+      height: 120px;
+      min-height: 100px;
     }
 
     .btn-cta {
@@ -1557,9 +1702,9 @@
       color: white;
       border: none;
       border-radius: 30px;
-      padding: 14px 44px;
+      padding: 16px 44px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 2px;
       cursor: pointer;
@@ -1567,6 +1712,7 @@
       margin: 22px auto 0;
       transition: all 0.35s;
       box-shadow: 0 4px 20px var(--teal-glow);
+      min-height: 52px;
     }
 
     .btn-cta:hover {
@@ -3237,29 +3383,48 @@
 
     /* Extra Small */
     @media(max-width:420px) {
-      .hero h1 {
-        font-size: clamp(24px, 8vw, 36px);
-        letter-spacing: 3px;
+      html {
+        font-size: clamp(14px, 4vw, 16px);
       }
 
-      .hero p {
-        font-size: 10px;
-        letter-spacing: 2px;
+      .hero {
+        min-height: 75vh;
+        padding: 16px 12px;
       }
 
       .hero img {
-        width: 58px;
-        height: 58px;
+        width: clamp(48px, 16vw, 65px);
+        max-width: 100%;
+        height: auto;
         border-radius: 14px;
-        border-width: 2px;
         margin-bottom: 16px;
       }
 
-      .hero-cta {
-        padding: 10px 24px;
-        font-size: 9px;
+      .hero h1 {
+        font-size: clamp(24px, 8vw, 36px);
         letter-spacing: 1.5px;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: clamp(13px, 4vw, 15px);
+        letter-spacing: 1px;
+        line-height: 1.6;
+      }
+
+      .hero-cta {
+        padding: 14px 28px;
+        font-size: 13px;
         margin-top: 20px;
+        min-height: 48px;
+      }
+
+      .nav-menu li a {
+        font-size: 13px;
+      }
+
+      .sec {
+        padding: 32px 12px;
       }
 
       .stats-grid {
@@ -3271,7 +3436,7 @@
       }
 
       .stat-label {
-        font-size: 7px;
+        font-size: 9px;
         letter-spacing: 1.5px;
       }
 
@@ -3309,6 +3474,42 @@
         font-size: 18px;
       }
     }
+
+    /* Ultra Small Screens */
+    @media(max-width:320px) {
+      .sec {
+        padding: 28px 10px;
+      }
+
+      html {
+        font-size: 14px;
+      }
+
+      .container {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      .nav {
+        padding: 0 12px;
+        height: 60px;
+      }
+
+      .brand-text .b1 {
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
+
+      .hero-cta {
+        padding: 14px 24px;
+        font-size: 12px;
+      }
+
+      #about {
+        margin: -16px 6px 0;
+        padding: 22px 12px;
+      }
+    }
   </style>
 </head>
 
@@ -3317,7 +3518,7 @@
   <!-- NAVBAR -->
   <div id="nav">
     <a class="nav-logo" onclick="go('home')">
-      <img src="logo.png" alt="Xkro Logo">
+      <img src="logo.png" alt="Xkro Logo" loading="lazy">
       <div class="brand-text">
         <span class="b1">XKRO</span>
         <span class="b2">SOLUTION PVT. LTD.</span>
@@ -3349,7 +3550,7 @@
   <div class="pg on" id="pg-home">
     <div class="hero" id="vanta-globe">
       <div>
-        <img src="logo.png" alt="Xkro">
+        <img src="logo.png" alt="Xkro" loading="lazy">
         <h1>XKRO</h1>
         <p>PRIVATE LIMITED</p>
         <button class="hero-cta" onclick="go('contact')">GET IN TOUCH</button>
@@ -4299,11 +4500,15 @@
             <h2>Send us a message</h2>
             <p>You can contact us with anything related to our Products. We'll get in touch with you as soon as
               possible.</p>
-            <div class="fgroup"><input type="text" placeholder="Your name" id="f-name"></div>
-            <div class="fgroup"><input type="email" placeholder="Email address" id="f-email"></div>
-            <div class="fgroup"><input type="tel" placeholder="Phone" id="f-phone"></div>
-            <div class="fgroup"><textarea placeholder="Your message" id="f-message"></textarea></div>
-            <button class="btn-cta" onclick="submitForm()">CONTACT US</button>
+            <form id="contact-form" action="https://formspree.io/f/xwvwkwad" method="POST">
+              <div class="fgroup"><input type="text" name="name" placeholder="Your name" id="f-name" required></div>
+              <div class="fgroup"><input type="email" name="email" placeholder="Email address" id="f-email" required>
+              </div>
+              <div class="fgroup"><input type="tel" name="phone" placeholder="Phone" id="f-phone"></div>
+              <div class="fgroup"><textarea name="message" placeholder="Your message" id="f-message"
+                  required></textarea></div>
+              <button type="submit" class="btn-cta">CONTACT US</button>
+            </form>
             <p id="form-msg" style="display:none;text-align:center;margin-top:14px;font-size:12px;color:var(--teal)">✓
               Message sent! We will get back to you soon.</p>
           </div>
@@ -4495,39 +4700,7 @@
       q.parentElement.classList.toggle('open');
     }
 
-    function submitForm() {
-      var n = document.getElementById('f-name').value.trim();
-      var e = document.getElementById('f-email').value.trim();
-      var p = document.getElementById('f-phone').value.trim();
-      var msg = document.getElementById('f-message').value.trim();
-      if (!n || !e) { alert('Please fill in your name and email address.'); return; }
 
-      var btn = document.querySelector('.btn-cta');
-      btn.textContent = 'SENDING...';
-      btn.disabled = true;
-
-      emailjs.send('service_xkro', 'template_xkro', {
-        from_name: n,
-        from_email: e,
-        phone: p,
-        message: msg,
-        to_email: 'Support@xkro.in'
-      }).then(function () {
-        document.getElementById('f-name').value = '';
-        document.getElementById('f-email').value = '';
-        document.getElementById('f-phone').value = '';
-        document.getElementById('f-message').value = '';
-        var fm = document.getElementById('form-msg');
-        fm.style.display = 'block';
-        btn.textContent = 'CONTACT US';
-        btn.disabled = false;
-        setTimeout(function () { fm.style.display = 'none'; }, 5000);
-      }, function (err) {
-        alert('Failed to send. Please email us directly at Support@xkro.in');
-        btn.textContent = 'CONTACT US';
-        btn.disabled = false;
-      });
-    }
 
     // Number count-up animation
     function initCountUp() {
@@ -4580,6 +4753,49 @@
         }
       }
     }
+
+    // Contact form AJAX submission
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var form = this;
+      var btn = form.querySelector('button[type="submit"]');
+      var originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        var response = await fetch('https://formspree.io/f/xwvwkwad', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          form.reset();
+          document.getElementById('form-msg').style.display = 'block';
+          btn.textContent = 'Sent!';
+          setTimeout(function () {
+            btn.textContent = originalText;
+            btn.disabled = false;
+            document.getElementById('form-msg').style.display = 'none';
+          }, 5000);
+        } else {
+          btn.textContent = 'Error! Try again';
+          btn.disabled = false;
+          setTimeout(function () {
+            btn.textContent = originalText;
+          }, 3000);
+        }
+      } catch (error) {
+        btn.textContent = 'Error! Try again';
+        btn.disabled = false;
+        setTimeout(function () {
+          btn.textContent = originalText;
+        }, 3000);
+      }
+    });
 
     // Hero floating particles
     function createParticles() {
@@ -4686,7 +4902,6 @@
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
       createParticles();
       initReveal();
       initCountUp();

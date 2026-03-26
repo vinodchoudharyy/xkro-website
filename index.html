@@ -130,8 +130,8 @@
       color: var(--magenta);
     }
 
-    min-height: 80vh;
-    >>>>>>>0bca7b9a965aa2900c95f32bb2c250b18808d2d3 padding: 24px 20px;
+min-height: 80vh;
+    padding: 24px 20px;
     overflow: hidden;
     }
 
@@ -218,8 +218,8 @@
     }
 
     /* Modern Small Phone (480px and below) */
-    min-height: 70vh;
-    >>>>>>>0bca7b9a965aa2900c95f32bb2c250b18808d2d3 padding: 24px 20px;
+min-height: 70vh;
+    padding: 24px 20px;
     }
 
     =======@media(max-width:480px) {
@@ -1002,22 +1002,18 @@
       animation: fadeInUp 1.2s ease 0.2s both;
     }
 
-    width: 100px;
-    >>>>>>>0bca7b9a965aa2900c95f32bb2c250b18808d2d3 max-width: 100%;
+width: clamp(60px, 20vw, 85px);
+    max-width: 100%;
     height: auto;
     aspect-ratio: 1;
     border-radius: 22px;
     margin: 0 auto 28px;
     display: block;
     object-fit: contain;
-    <<<<<<< HEAD box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    animation: float 4s ease-in-out infinite;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    =======box-shadow: 0 16px 50px rgba(74, 184, 212, 0.4);
-    animation: float 4s ease-in-out infinite,
-    glowPulse 3s ease-in-out infinite;
+    box-shadow: 0 16px 50px rgba(74, 184, 212, 0.4);
+    animation: float 4s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
     border: 3px solid rgba(255, 255, 255, 0.2);
-    >>>>>>>0bca7b9a965aa2900c95f32bb2c250b18808d2d3 position: relative;
+    position: relative;
     flex-shrink: 0;
     }
 
@@ -1165,6 +1161,10 @@
       transition: all 0.3s;
     }
 
+    .hero-dl-btn i {
+      font-size: 22px;
+    }
+
     .hero-dl-btns {
       display: flex;
       justify-content: center;
@@ -1184,12 +1184,12 @@
     }
 
     .hero-dl-btn.ios-btn {
-      background: linear-gradient(135deg, #333, #000);
-      border-color: rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, #A8A8A8, #808080);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .hero-dl-btn.ios-btn:hover {
-      background: linear-gradient(135deg, #555, #222);
+      background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
       transform: translateY(-2px);
     }
 
@@ -3677,14 +3677,11 @@
           <a class="hero-dl-btn android-btn" href="https://play.google.com/store/apps/details?id=com.xkro.app"
             target="_blank">
             <i class="fa-brands fa-google-play"></i>
-            <span>Android</span>
+            <span>Play Store</span>
           </a>
           <a class="hero-dl-btn ios-btn" href="https://apps.apple.com/us/app/xkro/id6748313357" target="_blank">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-              <path
-                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.06.05-2.36.71-3.06 1.48-.67.77-1.26 1.97-1.1 3.12.01 0 1.13-.46 2.09-.49z" />
-            </svg>
-            <span>iOS</span>
+            <i class="fab fa-app-store-ios"></i>
+            <span>App Store</span>
           </a>
         </div>
       </div>
@@ -3984,7 +3981,7 @@
         <div style="flex:1;min-width:220px;">
           <div class="dl-badge">
             <i class="fab fa-android" style="color:var(--teal);font-size:12px;"></i>
-            <i class="fab fa-apple" style="color:var(--teal);font-size:14px;margin-left:8px;"></i>
+            <i class="fab fa-app-store-ios" style="color:var(--teal);font-size:14px;margin-left:8px;"></i>
             <span>AVAILABLE ON ANDROID & IOS</span>
           </div>
           <h2>Download <span>XKRO App</span><br>for Free</h2>
@@ -4001,8 +3998,9 @@
                 <div style="font-size:15px;font-weight:700;font-family:'Montserrat',sans-serif;">Google Play</div>
               </div>
             </a>
-            <a class="gplay-btn" href="#" target="_blank" title="Coming Soon">
-              <i class="fab fa-apple" style="font-size:24px;"></i>
+            <a class="gplay-btn" href="https://apps.apple.com/us/app/xkro/id6748313357" target="_blank"
+              title="Download on App Store">
+              <i class="fab fa-app-store-ios" style="font-size:24px;"></i>
               <div>
                 <div style="font-size:9px;opacity:0.8;letter-spacing:1px;">Download on the</div>
                 <div style="font-size:15px;font-weight:700;font-family:'Montserrat',sans-serif;">App Store</div>
@@ -4141,7 +4139,7 @@
           <div style="flex:1;min-width:220px;">
             <div class="dl-badge">
               <i class="fab fa-android" style="color:var(--teal);font-size:12px;"></i>
-              <i class="fab fa-apple" style="color:var(--teal);font-size:14px;margin-left:8px;"></i>
+              <i class="fab fa-app-store-ios" style="color:var(--teal);font-size:14px;margin-left:8px;"></i>
               <span>AVAILABLE ON ANDROID & IOS</span>
             </div>
             <h2>Download <span>XKRO App</span><br>for Free</h2>
@@ -4158,11 +4156,9 @@
                   <div style="font-size:15px;font-weight:700;font-family:'Montserrat',sans-serif;">Google Play</div>
                 </div>
               </a>
-              <a class="gplay-btn" href="#" target="_blank" title="Coming Soon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="white" style="padding:1px;">
-                  <path
-                    d="M19.33 12.07c0-2.3.9-4.13 2.43-5.43a.6.6 0 00-.45-1.05c-1.2-.2-2.65.2-3.85.9-.95.55-1.8 1.4-2.4 2.5-.65-1.1-1.6-1.9-2.6-2.4-.9-.4-2.1-.8-3.3-.6-.8.1-2.1.5-3.1 1.8-.8.9-1.4 2.3-1.4 4.1 0 2.8 1.2 5.2 2.6 6.8.7.8 1.5 1.5 2.6 1.5s1.6-.6 2.4-1.4c.8-.8 1.2-1.9 1.2-1.9s.1.9 1.2 1.9c.8.8 1.6 1.4 2.6 1.4s1.9-.7 2.6-1.5c1.3-1.6 2.5-4 2.5-6.8zm-6.63 8.23c-.1.3-.2.6-.4.8a.6.6 0 01-.5.2c-.2 0-.4-.1-.6-.2-.5-.3-1.1-.6-1.8-.6s-1.3.3-1.8.6c-.2.1-.4.2-.6.2a.6.6 0 01-.5-.2c-.2-.2-.3-.5-.4-.8-.4-1.1-.6-2.3-.6-3.5 0-1.3.3-2.5.7-3.6.1-.2.2-.4.4-.5.2-.1.4-.2.6-.2.5 0 1 .3 1.6.3s1.1-.3 1.6-.3c.2 0 .4.1.6.2.2.1.3.3.4.5.4 1.1.7 2.3.7 3.6-.1 1.2-.3 2.4-.7 3.5zM17.43 7.87c.3-1.1 1.3-1.9 2.5-2.3.1-.1.3 0 .3.1-.4.6-.8 1.3-1 2.1-.3.6-.6 1.2-1 1.7-.1.1-.3 0-.3-.1.1-.5.3-1 .5-1.5z" />
-                </svg>
+              <a class="gplay-btn" href="https://apps.apple.com/us/app/xkro/id6748313357" target="_blank"
+                title="Download on App Store">
+                <i class="fab fa-app-store-ios" style="font-size:24px;"></i>
                 <div>
                   <div style="font-size:9px;opacity:0.8;letter-spacing:1px;">Download on the</div>
                   <div style="font-size:15px;font-weight:700;font-family:'Montserrat',sans-serif;">App Store</div>
@@ -4284,7 +4280,7 @@
           </div>
           <div class="svc-card"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="iOS">
             <div class="svc-body">
-              <div class="svc-tag" style="color:#4CAF50"><i class="fab fa-apple"></i> IOS</div>
+              <div class="svc-tag" style="color:#4CAF50"><i class="fab fa-app-store-ios"></i> IOS</div>
               <h3>IPHONE APP DEVELOPMENT</h3>
               <p>Highly innovative and focused iPhone &amp; iPad app development with right apps tailored for customer
                 satisfaction.</p>
@@ -4332,7 +4328,7 @@
         <div style="flex:1;min-width:220px;">
           <div class="dl-badge">
             <i class="fab fa-android" style="color:var(--teal);font-size:12px;"></i>
-            <i class="fab fa-apple" style="color:var(--teal);font-size:14px;margin-left:8px;"></i>
+            <i class="fab fa-app-store-ios" style="color:var(--teal);font-size:14px;margin-left:8px;"></i>
             <span>AVAILABLE ON ANDROID & IOS</span>
           </div>
           <h2>Download <span>XKRO App</span><br>for Free</h2>
@@ -4350,7 +4346,7 @@
               </div>
             </a>
             <a class="gplay-btn" href="#" target="_blank" title="Coming Soon">
-              <i class="fab fa-apple" style="font-size:24px;"></i>
+              <i class="fab fa-app-store-ios" style="font-size:24px;"></i>
               <div>
                 <div style="font-size:9px;opacity:0.8;letter-spacing:1px;">Download on the</div>
                 <div style="font-size:15px;font-weight:700;font-family:'Montserrat',sans-serif;">App Store</div>
@@ -4457,7 +4453,7 @@
           <div class="hire-item">
             <div class="hire-header" onclick="toggleH(this)">
               <h3>Dedicated iOS Developer</h3>
-              <div class="hire-icons"><i class="fab fa-apple"></i><i class="fas fa-chevron-down chev"></i></div>
+              <div class="hire-icons"><i class="fab fa-app-store-ios"></i><i class="fas fa-chevron-down chev"></i></div>
             </div>
             <div class="hire-body">
               <div class="hire-body-inner">
